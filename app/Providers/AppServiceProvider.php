@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        /** 
+         * Memastikan Laravel menggunakan folder public yang benar di Vercel 
+         * agar aset seperti gambar jihan23.png dan CSS tidak pecah.
+         */
+        $this->app->bind('path.public', function() {
+            return base_path('public');
+        });
     }
 }
